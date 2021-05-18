@@ -1,0 +1,70 @@
+/*  Customistation de la liste tokenize pour fonctionner avec les modals et avec couleurs perso */
+div.token-input-dropdown {
+	position: absolute;
+	width: 250px;
+	background-color: #fff;
+	overflow: hidden;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	cursor: default;
+	font-size: 12px;
+	font-family: Verdana;
+	z-index: 10101;
+}
+ul.token-input-list {
+	overflow: hidden;
+	height: auto !important;
+	width: 250px;
+	border: 1px solid #999;
+	cursor: text;
+	font-family: inherit;
+	z-index: 999;
+	margin: 0;
+	background-color: #fff;
+	list-style-type: none;
+	clear: left;
+	border-radius: 0;
+	box-shadow: none;
+	border-color: #d2d6de;
+	height: 30px;
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+}
+li.token-input-token {
+	overflow: hidden;
+	height: auto !important;
+	height: 1%;
+	margin: 0px;
+	padding: 3px 5px;
+	background-color: #9FD2EF;
+	color: #000;
+	font-weight: normal !important;
+	cursor: default;
+	display: block;
+}
+li.token-input-selected-token {
+	background-color: #3c8dbc;
+	border-color: #367fa9;
+	color: #fff;
+	font-weight: normal !important;
+}
+div.token-input-dropdown ul li em {
+	font-weight: normal !important;
+	font-style: normal;
+}
+div.token-input-dropdown p {
+	margin: 0;
+	padding: 5px;
+	font-weight: normal;
+	color: #367fa9;
+}
+div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+    background-color: #9FD2EF;
+}
+.pas-de-resultat {
+        line-height: 35px;
+        font-size: 16px;
+        color: #646464;
+}

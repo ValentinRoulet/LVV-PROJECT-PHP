@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DmpConnect-JS test pad - Common examples.</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<link href="examples.css" rel="stylesheet">
+
+	<script type="text/javascript" src="wrapperjs/dmpconnect.js"></script>
+
+	<script type="text/javascript" src="examples.js"></script>
+</head>
+
+<body onload="initializePageState()">
+    <label class="switch">
+        <input id="disabling_action" type="checkbox"/>
+        <span class="slider"></span>
+    </label>
+    <span class="switch-label" onClick="document.getElementById('disabling_action').click();">
+      Déverrouiller toutes les fonctions
+    </span>
+    <div id="tooltip"></div>
+    <div id="appState"></div>
+
+    <a target="_blank" href="https://jsoneditoronline.org/">[jsonedit]</a>
+    <br class="clear"/>
+
+    <div class="float-left">
+        <!--High-level API-->
+        <div class="container">
+            <h2 class="collapsible">High-level API</h2>
+            <div class="content">
+                <div class="bloc">
+                    <button type="button" class="collapsible">High-level API examples</button>
+                    <div class="content">
+                        <a href="javascript:listPcscSmartcardReaders()"	>List available smartcard readers </a>
+                        <a href="javascript:readVitaleCard()"			>Read the Vitale card </a>
+                        <a href="javascript:readCPxCard()"				>Read the CPx card and leave the session open </a>
+                    </div>
+                </div>
+
+                <div class="bloc">
+                    <button type="button" class="collapsible"			>High Level API functions</button>
+                    <div class="content">
+                        <b>Session</b><br/>
+                        
+                        <label for="TseCredentials">TSE credentials</label>          <input type="text" id="TseCredentials" /> <br />          
+                        Proxy server:
+                        <input type="text"
+                                name="Proxy server used for the session"
+                                value=""
+                                id="sessionProxyServer"/><br/>
+                        Proxy port:
+                        <input type="text"
+                                name="Proxy port used for the session"
+                                value=""
+                                id="sessionProxyPort"/><br/>
+                        Proxy username:
+                        <input type="text"
+                                name="Proxy username used for the session"
+                                value=""
+                                id="sessionProxyUsername"/><br/>
+                        Proxy password:
+                        <input type="text"
+                                name="Proxy password used for the session"
+                                value=""
+                                id="sessionProxyPassword"/><br/>
+                        Application id (optional):
+                        <input type="text"
+                               name="Application identifier"
+                               value=""
+                               id="applicationId"/><br/>
+                        <a href="javascript:hl_openSession()"			>hl_openSession </a>
+                        <a href="javascript:hl_startDummyMonitoring()"	>hl_startDummyMonitoring </a>
+                        <a href="javascript:hl_closeSession()" data-required="session">hl_closeSession </a>
+                        <a href="javascript:hl_getSessionState()" data-required="session">hl_getSessionState </a>
+                        Custom DcParameter (in base64):<br/>
+                        <textarea id="customDcParameter" rows="4" cols="50"></textarea><br />
+                        <a href="javascript:hl_openSessionWithCustomDcParam()"           >openSessionWithCustomDcParam                         </a><br />
+                        
+                    </div>
+                </div>
+
+                <div class="bloc">
+                    <button type="button" class="collapsible">DcParameters management functions</button>
+                    <div class="content">
+                        DcParameter (in base64):</br>
+                        <textarea id="registrationDcParameter" rows="4" cols="50"></textarea><br />
+
+                        <a href="javascript:registerDcParameter()">/registerDcParameter</a>
+                        <a href="javascript:unregisterDcParameter()">/unregisterDcParameter</a>
+                        <a href="javascript:isDcParameterRegistered()">/isDcParameterRegistered</a>
+                        <a href="javascript:getAllowedOrigins()">/getAllowedOrigins</a>
+                    </div>
+                </div>
+
+                <div class="bloc">
+                    <button type="button" class="collapsible">Other HTTPS commands</button>
+                    <div class="content">
+                        <a href="javascript:getServiceVersion()"               >/getServiceVersion()</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Other functions-->
+        <div class="container">
+            <h2 class="collapsible">Other functions</h2>
+            <div class="content" data-required="session">
+                <div class="bloc">
+                    <a href="javascript:hl_getInteropCodes()"		>hl_getInteropCodes() </a>
+                    <a href="javascript:hl_getUpdatedTypeCode()"    >hl_getUpdatedTypeCode()</a>
+                    <a href="javascript:hl_getObjectParameters()"	>hl_getObjectParameters() </a>
+                    <a href="javascript:hl_checkUserLicenseRight()"	>hl_checkUserLicenseRight() </a>
+
+                    <hr/>
+                    <table style="width:100%;">
+                        <thead>
+                        <th colspan="2">convert lunar date</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Input date</td>
+                            <td><input type="text" value="" id="inputDate"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="javascript:hl_convertLunarDateToStandardDate()">hl_convertLunarDateToStandardDate()</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Converted date</td>
+                            <td>
+                                <input type="text" value="" id="outputDate" readonly/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
+                    <table style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th colspan="2">compute birthday century/Regularize birthday</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Birthday</td>
+                            <td>
+                                <input type="text" value="" id="inputBirthday"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Patient quality
+                            </td>
+                            <td>
+                                <select id="patientQualitySelector">
+                                    <option value="0">Assuré</option>
+                                    <option value="1">Ascendants, descendants, collatéraux</option>
+                                    <option value="2">Conjoint</option>
+                                    <option value="3">Conjoint divorcé</option>
+                                    <option value="4">Concubin</option>
+                                    <option value="5">Conjoint séparé</option>
+                                    <option value="6">Enfant</option>
+                                    <option value="8">Conjoint veuf</option>
+                                    <option value="9">Autre assuré</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="javascript:hl_computeBirthDayCentury()">hl_computeBirthDayCentury()</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="javascript:hl_regularizeBirthDateIfNeeded()">hl_regularizeBirthDateIfNeeded()</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Result</td>
+                            <td><input type="text" id="birthdayResult"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--Low level API functions-->
+        <div class="container">
+            <h2 class="collapsible">Low level API functions</h2>
+            <div class="content">
+                <div class="bloc">
+                    <table>
+                        <tr>
+                            <td>
+                                DmpConnect
+                            </td>
+                            <td>
+                                <select id="DmpcLogLevel">
+                                    <option value="0">Disabled</option>
+                                    <option value="1">Fatal</option>
+                                    <option value="2">Errors</option>
+                                    <option value="3">Warnings</option>
+                                    <option value="4">Infos</option>
+                                    <option value="5">Dev</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                DmpConnect-JS
+                            </td>
+                            <td>
+                                <select id="DmpcJsLogLevel">
+                                    <option value="0">Disabled</option>
+                                    <option value="1">Fatal</option>
+                                    <option value="2">Critical</option>
+                                    <option value="3">Error</option>
+                                    <option value="4">Warning</option>
+                                    <option value="5">Notice</option>
+                                    <option value="6">Information</option>
+                                    <option value="7">Debug</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>        
+
+                    <a href="javascript:getLogLevels()"             >getLogLevels()            </a>
+                    <a href="javascript:setLogLevels()"             >setLogLevels()            </a>
+
+                    <a href="javascript:getLogsTail()">getLogsTail() </a>
+                    <a href="javascript:getObjectParameterString()" data-required="session"
+                       title="Get the document content (DMPConnect.ObjectParameterName.DocumentContent) of the downloaded document. hl_getDocumentContent must have been called, and the 'Document handle' input box must be set."
+                    >getObjectParameterString()</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Cards-->
+    <div class="container float-left">
+        <h2 class="collapsible">Cards</h2>
+        <div class="content">
+
+            <!--Readers-->
+            <div class="bloc">
+                <button type="button" class="collapsible">Readers</button>
+                <div class="content" data-required="session">
+
+                    <a href="javascript:hl_getPcscReaders()" data-required="session">hl_getPcscReaders </a>
+
+                    CPS reader index:
+                    <input type="number"
+                           name="PC/SC CPx reader index"
+                           step="1"
+                           value="0"
+                           id="cpxReaderIndex"/>
+                    <br/>
+
+                    CPS reader name:
+                    <select id="listOfCpxReaderNames">
+                    </select>
+                    <br/>
+
+                    Vitale reader index:
+                    <input type="number"
+                           name="PC/SC Vitale reader index"
+                           step="1"
+                           value="1"
+                           id="vitaleReaderIndex"/>
+                    <br/>
+
+                    Vitale reader name:
+                    <select id="listOfVitaleReaderNames">
+                    </select>
+                </div>
+            </div>
+
+            <!--CPX-->
+            <div class="bloc">
+                <button type="button" class="collapsible">CPX</button>
+                <div class="content" data-required="session">
+
+                    <a href="javascript:hl_getCpxCard()" data-required="session">hl_getCpxCard </a>
+                    <a href="javascript:hl_getCpxStatus()" data-required="cpxCard">hl_getCpxStatus </a>
+
+                    PIN code CPS:
+                    <input type="text"
+                           name="CPx PIN code"
+                           value="1234"
+                           id="cpsPinCode"/>
+                    <br/>
+
+                    <a href="javascript:hl_signWithCpxCard()" data-required="cpxCard">hl_signWithCpxCard </a>
+                    
+                    <a href="javascript:hl_readCpxCard()" data-required="cpxCard">hl_readCpxCard </a>
+                    CPx card checking interval:
+                    <input type="number"
+                           name="CPx card checking interval in seconds"
+                           step="1"
+                           value="5"
+                           id="cpxReaderCheckingInterval"/>
+                    <br/>
+                    <a href="javascript:hl_startCpxCardMonitoring()" data-required="session">hl_startCpxCardMonitoring </a>
+                    <a href="javascript:stopCPxCardMonitoring()">Stop CPx card monitoring </a>
+
+                </div>
+            </div>
+            <!--Vitale-->
+            <div class="bloc">
+                <button type="button" class="collapsible">Vitale</button>
+                <div class="content" data-required="session">
+
+                    <a href="javascript:hl_getVitaleCard()" data-required="session">hl_getVitaleCard </a>
+                    <a href="javascript:hl_readVitaleCard()" data-required="vitaleCard">hl_readVitaleCard </a>
+                    Vitale card checking interval:
+                    <input type="number"
+                           name="Vitale card checking interval in seconds"
+                           step="1"
+                           value="5"
+                           id="vitaleReaderCheckingInterval"/>
+                    <br/>
+                    <a href="javascript:hl_startVitaleCardMonitoring()"
+                       data-required="session">hl_startVitaleCardMonitoring </a>
+                    <a href="javascript:stopVitaleCardMonitoring()">Stop Vitale card monitoring </a>
+
+                    <table style="width:100%;" data-required="vitaleCardRead">
+                        <thead>
+                        <th colspan="2">Vitale data</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Patient</td>
+                            <td>
+                                <select id="vitalePatientSelector"
+                                        onchange="javascript:onSelectVitalePatientData()"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" value="" id="vitalePatientName" readonly/></td>
+                        <tr>
+                        <tr>
+                            <td>BirthName</td>
+                            <td><input type="text" value="" id="vitalePatientBirthName" readonly/></td>
+                        </tr>
+                        <tr>
+                            <td>Given</td>
+                            <td><input type="text" value="" id="vitalePatientGiven" readonly/></td>
+                        </tr>
+                        <tr>
+                            <td>Birthday</td>
+                            <td><input type="text" value="" id="vitalePatientBirthday"></td>
+                        </tr>
+                        <tr>
+                            <td>Birth rank</td>
+                            <td><input type="text" value="" id="vitalePatientBirthRank"></td>
+                        </tr>
+                        <tr>
+                            <td>NIR (nirOD)</td>
+                            <td><input type="text" value="" id="vitalePatientNir" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Certified NIR</td>
+                            <td><input type="text" value="" id="vitalePatientCertifiedNir" readonly/></td>
+                        </tr>
+                        <tr>
+                            <td>INS-C</td>
+                            <td><input type="text" value="" id="vitalePatientInsC" readonly/></td>
+                        </tr>
+                        <tr>
+                            <td>Quality</td>
+                            <td><input type="text" value="" id="vitalePatientQuality" readonly/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Virtual printer management-->
+    <div class="container float-left">
+        <h2 class="collapsible">Virtual printer management</h2>
+        <div class="content" data-required="session">
+            <div class="bloc">
+                <a href="javascript:hl_startPrintedDocumentsMonitoring()"	>hl_startPrintedDocumentsMonitoring()</a>
+                <a href="javascript:stopPrintedDocumentsMonitoring()"		>stopPrintedDocumentsMonitoring()</a>
+                <a href="javascript:hl_flushPrintedDocuments()"				>hl_flushPrintedDocuments()</a>
+                <a href="javascript:hl_getPrintedDocumentsCount()"			>hl_getPrintedDocumentsCount()</a>
+                <a href="javascript:hl_getPrintedDocuments()"				>hl_getPrintedDocuments()</a>
+                <a href="javascript:hl_getNextPrintedDocument()"			>hl_getNextPrintedDocument()</a>
+            </div>
+        </div>
+    </div>
+
+        <!--Remote control-->
+    <div class="container float-left">
+        <h2 class="collapsible">Remote control</h2>
+        <div class="content" data-required="session">
+            <div class="bloc">
+
+                <a href="javascript:hl_startRemoteControl()">hl_startRemoteControl</a>
+                <a href="javascript:hl_stopRemoteControl()">hl_stopRemoteControl</a>
+                <a href="javascript:hl_remoteControlStatus()">hl_remoteControlStatus</a>
+
+                <a href="javascript:hl_startRemoteControlInMonitoring()"    >hl_startRemoteControlInMonitoring()</a>
+                <a href="javascript:hl_stopRemoteControlInMonitoring()"     >hl_stopRemoteControlInMonitoring()</a>
+
+                <a href="javascript:hl_exportDocumentToRemoteOut()"         >hl_exportDocumentToRemoteOut()</a>
+                <a href="javascript:hl_exportDocumentToRemoteOutByUniqueId()">hl_exportDocumentToRemoteOutByUniqueId()</a>
+
+                RequestId:
+                <input type="text" name="requestId" id="requestId" value=""/>
+                <a href="javascript:hl_sendRemoteInOkAnswer()"              >hl_sendRemoteInOkAnswer()</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Session data-->
+    <div class="container float-left">
+        <h2 class="collapsible">Session data</h2>
+        <div class="content" data-required="session">
+            <div class="bloc">
+                <button type="button" class="collapsible">By ID</button>
+                <div class="content">
+                    Session data ID
+                    <input type="text"
+                           name="Session Data ID"
+                           value=""
+                           id="sessionDataId"/>
+                    <br/>
+                    Session data content: <br/>
+                    <textarea rows="6"
+                              cols="50"
+                              id="sessionDataField"></textarea>
+
+                    <a href="javascript:hl_setSessionData()"	>hl_setSessionData( optional id )</a> - Creates or
+                    update
+                    a data block.
+                    <a href="javascript:hl_getSessionData()"	>hl_getSessionData( id )</a>
+                    <a href="javascript:hl_removeSessionData()"	>hl_removeSessionData( id )</a>
+                </div>
+            </div>
+
+            <div class="bloc">
+                <button type="button" class="collapsible">Global</button>
+                <div class="content">
+                    Remove all data blocks.
+                    <a href="javascript:hl_clearSessionData()"	>hl_clearSessionData()</a>
+                    Get the total amount of memory used by all data blocks.
+                    <a href="javascript:hl_getSessionDataSize()">hl_getSessionDataSize()</a>
+                    <a href="javascript:hl_getMaximumSessionDataSize()">hl_getMaximumSessionDataSize()</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Persistant data-->
+    <div class="container float-left">
+        <h2 class="collapsible">Persistant data</h2>
+        <div class="content" data-required="session">
+            <div class="bloc">
+                Persistant data content:<br/>
+                <textarea rows="6" cols="50" id="persistantDataField"></textarea>
+
+                <a href="javascript:hl_setPersistantData()"				>hl_setPersistantData()</a>
+                <a href="javascript:hl_getPersistantData()"				>hl_getPersistantData()</a>
+                <a href="javascript:hl_clearPersistantData()"			>hl_clearPersistantData()</a>
+                <a href="javascript:hl_getPersistantDataSize()"			>hl_getPersistantDataSize()</a>
+                <a href="javascript:hl_getMaximumPersistantDataSize()"	>hl_getMaximumPersistantDataSize()</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

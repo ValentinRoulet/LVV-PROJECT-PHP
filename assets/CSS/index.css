@@ -1,0 +1,245 @@
+
+.html
+{
+    background-color: #10132c;
+    color: beige;
+}
+
+#barre{
+    height:1%;
+    width:100%;
+    background-color: rgb(0, 0, 0);
+}
+
+p{
+    color: beige;
+    font-family: 'Rokkitt', serif;
+    font-size: 2vmin;
+}
+
+.textNoir
+{
+  color :#10132c;
+  font-family: 'Rokkitt', serif;
+}
+
+
+.Texte1 {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ---------------------- TESTS -------------------------------------------------------------*/
+
+.fixed {
+  position: fixed;
+  
+}
+
+/* ---------------------- FIN TESTS -------------------------------------------------------------*/
+
+
+
+/* ---------------------- FULL CALENDAR-------------------------------------------------------------*/
+#calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+  }
+/* ---------------------- FIN FULLCALENDAR -------------------------------------------------------------*/
+
+
+
+/* --------------------- IMAGES ------------------------------------------------ */
+
+.GroupImage1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imageR {
+    margin: 2vw;
+    width: 18vw;
+    height: 29vh;
+}
+
+.imageC {
+    margin: 2vw;
+    width: 18vw;
+    height: 29vh;
+    
+}
+
+
+.image1 {
+    min-width: 50px;
+    max-width: 900px;
+    width: auto;
+    height: auto;
+}
+
+.cadre {
+    margin-bottom: 30px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 1px 1px 5px 1px #CCCCCC;
+    transition: 0.3s;
+}
+
+.grayscaleImg {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.grayscaleImg:hover {
+	-webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    
+}
+
+.zoomImg {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.zoomImg:hover {
+	/* L'image est grossie de 25% */
+-webkit-transform:scale(1.25); /* Safari et Chrome */
+-moz-transform:scale(1.25); /* Firefox */
+-ms-transform:scale(1.25); /* Internet Explorer 9 */
+-o-transform:scale(1.25); /* Opera */
+transform:scale(1.25);
+}
+
+.imagePara {
+  box-sizing: content-box;
+  width: 100%;
+  height: 150vh;
+}
+
+
+/* ---------------------------- FIN IMAGES ------------------------------------------------------------*/
+
+/* ------------------------ESPACEMENTS ----------------------------------------------------- */
+
+.spacer.s0 {
+	min-height: 1px;
+}
+.spacer.s1 {
+	min-height: 100px;
+}
+.spacer.s2 {
+	min-height: 200px;
+}
+.spacer.s3 {
+	min-height: 300px;
+}
+.spacer.s4 {
+	min-height: 400px;
+}
+.spacer.s5 {
+	min-height: 500px;
+}
+.spacer.s6 {
+	min-height: 600px;
+}
+.spacer.s7 {
+	min-height: 700px;
+}
+.spacer.s8 {
+	min-height: 800px;
+}
+.spacer.s9 {
+	min-height: 900px;
+}
+.spacer.s10 {
+	min-height: 1000px;
+}
+.spacer.s_viewport {
+	min-height: 100%;
+}
+
+/* ------------------------ FIN ESPACEMENTS ----------------------------------------------------- */
+
+/* -------------------- ANIMATIONS -------------------------------------------------------*/
+
+.droite{
+    animation-duration: 2s;
+    animation-name: slideinn;
+
+    animation: slideinn 1s linear infinite;
+    animation-play-state: running;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    
+}
+
+@keyframes slideinn {
+    from {
+    margin-left: 100%;
+    
+    /* color: aliceblue; */
+    }
+
+    to {
+    margin-left: 1%;
+    
+    /* color: black; */
+    }
+}
+
+.gauche{
+    animation-duration: 2s;
+    animation-name: slidein;
+
+    animation: slideinn 1s linear infinite;
+    animation-play-state: running;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    
+}
+
+@keyframes slidein {
+    from {
+    margin-right: 0%;
+    
+    /* color: aliceblue; */
+    }
+
+    to {
+    margin-right: 100%;
+    
+    /* color: black; */
+    }
+}
+
+.featured-image-container .card {
+  padding: 10px;
+  height: 0;
+  padding-bottom: calc(100% - 10px);
+}
+
+.gs_reveal {
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0s;
+}
+
+
+/* --------------------------FIN ANIMATIONS ------------------------------------------------------------------- */
+
+
+
+
+
+
