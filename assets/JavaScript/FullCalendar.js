@@ -3,13 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
 
+
         initialView: 'dayGridMonth',
         initialDate: '2021-05-07',
-
+        locale: 'fr',
+        
         headerToolbar: {
-            left: 'prev,next today',
+            left: "prev,next today",
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: ''
         },
 
         events: [
@@ -61,6 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         ]
     });
-  
+
     calendar.render();
-  });
+});

@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ProjetPhP</title>
 
+    <script type="text/javascript" src="..\..\..\assets\JavaScript\FullCalendar.js"></script>
+    
+    
 
+    
+
+
+    
 
     <!-- Font <p> ---------->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -88,7 +95,6 @@
 
     <div class="spacer s10"></div>
     
-
 
 
     <div id='calendar'></div>

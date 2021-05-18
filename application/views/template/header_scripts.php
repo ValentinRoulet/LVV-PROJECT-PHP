@@ -24,7 +24,18 @@ foreach ($scripts as $script) {
         echo "<link rel='stylesheet' href='".base_url('/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')."'/>";
     }
 	
-	
+	//----------------------------------------------------------------------------------------//
+	//----------------------------------FULLCALENDAR-----------------------------------------//
+	//----------------------------------------------------------------------------------------//
+	if ($script == 'calendar'){
+        
+        echo "<script type='text/javascript' src='" . base_url()."/assets/plugins/fullcalendar-5.7.0/lib/locales-all.min.js'> </script>";
+        echo "<script type='text/javascript' src='" . base_url()."/assets/plugins/fullcalendar-5.7.0/lib/main.min.js'> </script>";
+        echo "<link href='".base_url('\assets\plugins\fullcalendar-5.7.0\lib\main.css')."' rel='stylesheet' />";
+
+        
+    }
+    //
 
 	
 	 //----------------------------------------------------------------------------------------//
@@ -183,15 +194,11 @@ foreach ($scripts as $script) {
     //----------------------------------------------------------------------------------------//
 	//----------------------------------FULLCALENDAR-----------------------------------------//
 	//----------------------------------------------------------------------------------------//
-	if ($script == 'fullcalendar'){
-        /*
-        echo "<link href='".base_url('/assets/plugins/fullcalendar/core/main.css')."' rel='stylesheet' />";
-        echo "<link href='".base_url('/assets/plugins/fullcalendar/daygrid/main.css')."' rel='stylesheet' />";
-        echo "<link href='".base_url('/assets/plugins/fullcalendar/timegrid/main.css')."' rel='stylesheet' />";
-        */
-        echo '<script type="text/javascript" src="..\..\..\assets\plugins\fullcalendar-5.7.0\lib\main.js"></script>';
+	if ($script == 'calendar'){
+
+        echo '<script type="text/javascript" src="/assets/plugins/fullcalendar-5.7.0/lib/main.min.js"></script>';
+        echo "<script type='text/javascript' src='" . base_url()."/assets/plugins/fullcalendar-5.7.0/lib/main.min.js'> </script>";
         echo "<link href='".base_url('\assets\plugins\fullcalendar-5.7.0\lib\main.css')."' rel='stylesheet' />";
-        echo '<script type="text/javascript" src="..\..\..\assets\plugins\fullcalendar-5.7.0\lib\locales-all.js"></script>';
 
         
     }
