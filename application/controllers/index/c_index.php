@@ -41,6 +41,17 @@ class c_index extends C_utilitaire {
         if($this->input->post('fratrie') != ''){
             redirect($this-> dir_fratrie);
         }
+
+        //On prends les events de la base de donnée
+        $data['result'] = $this->db->get("EVENTS")->result();
+
+        foreach ($data['result'] as $key => $value) {
+            $data['data'][$key]['title'] = $value->title;
+            $data['data'][$key]['start'] = $value->start_date;
+            $data['data'][$key]['end'] = $value->end_date;
+            $data['data'][$key]['backgroundColor'] = "#00a65a";
+        }
+
         
         // On charge les differents modules neccessaires a l'affichage d'une page
         //$this->load->view('template/header_html_base', $data);
