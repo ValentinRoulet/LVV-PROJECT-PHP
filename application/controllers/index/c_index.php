@@ -26,22 +26,6 @@ class c_index extends C_utilitaire {
             array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
         );
 
-
-        // Quand le bouton changelog est appuyé
-        
-        if($this->input->POST('oui') != ''){
-            echo "oui" ;
-            redirect($this-> dir_controlleur2);
-        }
-        
-        // Quand le bouton totp est appuyé
-        if($this->input->post('totp') != ''){
-            redirect($this-> dir_totp);
-        }
-        // Quand le bouton fratrie est appuyé
-        if($this->input->post('fratrie') != ''){
-            redirect($this-> dir_fratrie);
-        }
         
         // On charge les differents modules neccessaires a l'affichage d'une page
         //$this->load->view('template/header_html_base', $data);
@@ -100,6 +84,7 @@ class c_index extends C_utilitaire {
                 'end_date'  => $this->input->post('start')
             );
             $this->m_fullcalendar->insert_event($data);
+            
         }
     }
 

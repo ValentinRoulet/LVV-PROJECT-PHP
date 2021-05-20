@@ -33,11 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         start = moment(date).format('YYYY/MM/DD');
                         $.ajax({
-                            url:"../../index/c_index/insert",
+                            url:"../../index.php/index/c_index/insert",
                             type:"POST",
                             data:{title:title, start:start},
                             success:function()
                             {
+                                calendar.refetchEvents();
                                 alert("Added Successfully");
                                 
                             }
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var id = event.event.id;
                 
                 $.ajax({
-                    url:"../../index/c_index/update",
+                    url:"../../index.php/index/c_index/update",
                     type:"POST",
                     data:{title:title, start:start, end:end, id:id},
                     success:function()
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var title = event.event.title;
                 var id = event.event.id;
                 $.ajax({
-                    url:"../../index/c_index/update",
+                    url:"../../index.php/index/c_index/update",
                     type:"POST",
                     data:{title:title, start:start, end:end, id:id},
                     success:function()
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     var id = event.event.id;
                     $.ajax({
-                        url:"../../index/c_index/delete",
+                        url:"../../index.php/index/c_index/delete",
                         type:"POST",
                         data:{id:id},
                         success:function()
