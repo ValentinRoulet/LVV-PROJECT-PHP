@@ -98,18 +98,10 @@
 
 
     <div class="spacer s10" name="espace"></div>
-  
-    
-    <script>
 
-    </script>
-
-    
+    <!-- CALENDRIER -->
     <div id='calendar'></div>
-
-            <!-- <button type='submit' class='btn btn-primary center no-print' value="Edit" name="changelog"  >ChangeLog </button> -->
-            <!-- <button type='submit' class='btn btn-primary center no-print' value="Edit" name="totp"  >totp </button> -->
-            <!-- <button type='submit' class='btn btn-primary  no-print' value="Edit" name="fratrie"  >Fratrie </button> -->
+    <!---------------->
 
 
             

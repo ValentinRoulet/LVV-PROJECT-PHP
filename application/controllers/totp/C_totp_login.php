@@ -1,5 +1,4 @@
 <?php
-
 //Commentaire
 
 use Otp\Otp;
@@ -222,6 +221,38 @@ class c_totp_login extends C_utilitaire {
             "nom" => $this->m_totp_login->get_data_user($_SESSION['dataUser'][0]->user_id)[0]->user_nom,
             "mail" => $this->m_totp_login->get_data_user($_SESSION['dataUser'][0]->user_id)[0]->user_mail,
             "estSimple" => $this->m_totp_login->get_data_user($_SESSION['dataUser'][0]->user_id)[0]->totp_key == null
+        );
+
+        $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');
+        // Creation du bandeau
+        $data['titre'] = array("Informations de l'utilisateur", "");
+        $data['boutons'] = array(
+            array("Retour", "fa fa-arrow-left", $this->dir_controlleur . "/mon_compte", null)
+        );
+        $data['custom_script'] = '';
+
+        // On charge les differents modules neccessaires a l'affichage d'une page
+        $this->load->view('template/header_html_base', $data);
+        $this->load->view('template/header_scripts', $data);
+        $this->load->view('template/bandeau', $data);
+		$this->load->view("totp/infos_utilisateur.php", $data);
+        $this->load->view('template/footer_scripts', $data);
+        $this->load->view('template/footer_html_base');
+    }
+
+    function profil($idProfil)
+    {
+        // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
+        if($_SESSION['dataUser'] == null){
+            redirect(base_url() . 'index.php/'. $this->dir_controlleur);
+        }
+
+        //données envoyé à la vue
+        $data['userInfo'] = array(
+            "prenom" => $this->m_totp_login->get_data_user($idProfil)->user_prenom,
+            "nom" => $this->m_totp_login->get_data_user($idProfil)->user_nom,
+            "mail" => $this->m_totp_login->get_data_user($idProfil)->user_mail,
+            "tel" =>$this->m_totp_login->get_data_user($idProfil)->user_tel
         );
 
         $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');

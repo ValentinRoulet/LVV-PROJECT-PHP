@@ -6,22 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth',
         initialDate: '2021-05-07',
         locale: 'fr',
+        //détermine si le calendrier peut être modifier(Ajout, suppression, modification des dates)
         editable: true,
 
 
-        
+        //position des boutons dans le bandeau du calendrier
         headerToolbar: {
             left: "prev,next",
             center: 'title',
             right: 'addEventButton'
         },
 
+        //ajout du bouton ajout
         customButtons: {
             addEventButton: {
-                text: 'add event...',
+                text: 'Ajouter date',
                 click: function() {
                     title = prompt('Entrer le titre');
-                    var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+                    var dateStr = prompt('Entrer la date sous forme ANNEE/MOIS/JOURS');
                     var date = new Date(dateStr + 'T00:00:00'); // will be in local time
 
                     if (!isNaN(date.valueOf())) { // valid?
@@ -51,8 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
 
+        //chargement des dates en appelant la fonction load dans le controlleur
         events:"../../index.php/index/c_index/load",
 
+        //evenement à faire lorsqu'on redimentionne
         eventResize: function(event)
             {
                 
@@ -77,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
             },
 
+        //evenement à faire lorsqu'on déplace une date
         eventDrop:function(event)
             {
                 var start = event.event.start;
@@ -97,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
         },
 
+        //évenement à faire lorsqu'on clique sur une date déjà existante
         eventClick:function(event)
             {
                 if(confirm("Are you sure you want to remove it?"))
@@ -114,19 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 }
         }
-
-        /*
-        events: [
-            {
-                title: 'oui',
-                url: 'http://google.com/',
-                start: '2021-05-28'
-            }
-        ]
-        */
     });
 
-
+    //affiche le calendrier
     calendar.render();
 
     
