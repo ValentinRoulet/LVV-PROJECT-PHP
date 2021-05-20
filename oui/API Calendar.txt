@@ -1,0 +1,3 @@
+client id : 211761101321-bse0u9v94d7prb99rjrjqk9uu2l3k8fi.apps.googleusercontent.com
+
+client ecret : yjhbMto16WNce5O2PDzIP0K7

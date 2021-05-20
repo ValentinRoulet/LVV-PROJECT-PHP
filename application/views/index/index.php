@@ -6,9 +6,10 @@
     <title>ProjetPhP</title>
 
 
-    <!-- <script type="text/javascript" src="..\..\..\assets\JavaScript\FullCalendar.js"></script> -->
+    <script type="text/javascript" src="..\..\..\assets\JavaScript\FullCalendar.js"></script>
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
 
     
 
@@ -32,8 +33,9 @@
         <div class="Texte1"> <p style=" font-size: 1.5vw; margin: auto;"> Ce BTS est composé en deux option : SLAM et SISR </p> </div>
       </div>
 
-      <div class="spacer s3"></div>
+      <div class="spacer s3" name="espace"></div>
 
+      <!-- groupement des deux images ------------->
       <div class="">
         <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/index/c_index" method="POST">
           <div class="GroupImage1">
@@ -48,6 +50,7 @@
           </div>
         </form>
       </div>
+      <!-- fin groupement des deux images --------------->
 
 
 
@@ -87,87 +90,21 @@
           </div>
         </div>
       </div>
-
+      <!-- ---- FIN MODAL ------- -->
 
     </section>
 
 
 
 
-    <div class="spacer s10"></div>
+    <div class="spacer s10" name="espace"></div>
+  
     
+    <script>
 
-<script>
+    </script>
 
-    document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-
-
-        initialView: 'dayGridMonth',
-        initialDate: '2021-05-07',
-        locale: 'fr',
-        
-        headerToolbar: {
-            left: "prev,next today",
-            center: 'title',
-            right: ''
-        },
-
-        events: [
-
-                
-            {
-                title: 'Long Event',
-                start: '2021-05-07',
-                end: '2021-05-10'
-            },
-            {
-                groupId: '999',
-                title: 'Repeating Event',
-                start: '2021-05-09T16:00:00'
-            },
-            {
-                groupId: '999',
-                title: 'Repeating Event',
-                start: '2021-05-16T16:00:00'
-            },
-            {
-                title: 'Conference',
-                start: '2021-05-11',
-                end: '2021-05-13'
-            },
-            {
-                title: 'Meeting',
-                start: '2021-05-12T10:30:00',
-                end: '2021-05-12T12:30:00'
-            },
-            {
-                title: 'Lunch',
-                start: '2021-05-12T12:00:00'
-            },
-            {
-                title: 'Meeting',
-                start: '2021-05-12T14:30:00'
-            },
-            {
-                title: 'Birthday Party',
-                start: '2021-05-13T07:00:00'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2021-05-28'
-            }
-        ]
-    });
-
-    calendar.render();
-});
-
-</script>
-
+    
     <div id='calendar'></div>
 
             <!-- <button type='submit' class='btn btn-primary center no-print' value="Edit" name="changelog"  >ChangeLog </button> -->
@@ -179,3 +116,4 @@
         
   </body>
 </html>
+
