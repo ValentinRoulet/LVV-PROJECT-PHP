@@ -28,7 +28,8 @@ class c_totp_login extends C_utilitaire {
         $this->load->model('totp/m_totp_login');
         $this->load->helper('fonctions_helper');
         $this->dir_controlleur = 'totp/c_totp_login';
-        $this->dir_changelog = 'changeLog/c_changelog_posts';
+        $this->dir_messagerie = 'messagerie/c_messagerie';
+        $this->dir_index = 'index/c_index';
 
 	}
 
@@ -101,8 +102,9 @@ class c_totp_login extends C_utilitaire {
         $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');
         // Creation du bandeau
         $data['titre'] = array("Mon Compte", "");
-        $data['boutons'] = array(array("Deconnexion", "fa fa-arrow-left", $this->dir_controlleur, null),
-                                array("ChangeLog", "fas fa-bacon", $this->dir_changelog, null));
+        $data['boutons'] = array(array("Deconnexion", "fa fa-sync", $this->dir_controlleur, null),
+                                array("Messagerie", "fas fa-bacon", $this->dir_messagerie, null),
+                                array("Retour", "fas fa-arrow-left", $this->dir_index, null),);
         $data['custom_script'] = '';
 
         // On charge les differents modules neccessaires a l'affichage d'une page

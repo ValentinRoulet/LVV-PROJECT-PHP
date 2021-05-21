@@ -12,6 +12,7 @@ class c_index extends C_utilitaire {
 		setlocale( LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1' );
         $this->dir_controlleur = 'index/c_index';
         $this->dir_login = 'totp/c_totp_login';
+        $this->dir_compte = 'totp/c_totp_login/mon_compte';
         $this->load->model('fullcalendar/m_fullcalendar');
         $this->load->model('totp/m_totp_login');
 
@@ -45,6 +46,8 @@ class c_index extends C_utilitaire {
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
                 array("Déconnexion", "fas fa-sync", $this->dir_login, null),
+                array("Mon compte", "fas fa-sync", $this->dir_compte, null),
+                
             );
         }
         

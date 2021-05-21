@@ -10,9 +10,10 @@ class c_messagerie extends C_utilitaire {
 		parent::__construct();
 		date_default_timezone_set( 'Europe/Paris' );
 		setlocale( LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1' );
+        $this->dir_controlleur = 'messagerie/c_messagerie';
         $this->dir_index = 'index/c_index';
         $this->dir_login = 'totp/c_totp_login';
-        $this->dir_retour = 'totp/c_totp_mon_compte';
+        $this->dir_retour = 'totp/c_totp_login/mon_compte';
         $this->load->model('totp/m_totp_login');
 
 	}
@@ -20,7 +21,7 @@ class c_messagerie extends C_utilitaire {
     function index(){
 
         // On peuple la variable data pour charger les bons script/css
-        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','animScroll','cssIndex', 'calendar');
+        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','cssIndex' );
 
         // Creation du bandeau
         $data['titre'] = array("Menu", "fa fa-shower");
@@ -54,12 +55,25 @@ class c_messagerie extends C_utilitaire {
         $this->load->view('template/bandeau', $data);
         $this->load->view('template/footer_scripts', $data);
         $this->load->view('template/footer_html_base');
-        $this->load->view('index/index',$data);
+        $this->load->view('messagerie/editeur',$data);
     }
 
     
 
+    function editeur()
+    {
+        
+    }
+
+
+
+
+
+
+
+
+
 }
 
-
+    
 

@@ -1,3 +1,13 @@
+<?php
+// on vérifie toujours qu'il s'agit d'un membre qui est connecté
+if ($_SESSION['dataUser'] == null) {
+	// si ce n'est pas le cas, on le redirige vers l'accueil
+	header ('Location: index.php/index/c_index');
+	exit();
+}
+?>
+
+
 <!doctype html>
 <html>
     <head>
@@ -8,20 +18,7 @@
             
             
         <div class="box box-primary with-border col-md-4">
-            <form class="form-horizontal" action="<?php echo base_url() . $url; ?>" method="POST">
-
-                <div class="box-header with-border">
-
-                    <div class="form-group">
-                        <label for="inputTitre" class="col-sm-1 control-label">Titre</label>
-
-                        <div class="col-sm-10">
-                            <input type="text" name="titre" id="inputTitre" class="form-control" placeholder="Titre" value="<?php if(isset($Titre)) {echo($Titre[0]->titre_post);} ?>" required>
-                        </div>
-
-                        <span class="text-danger"><?php echo form_error('titre'); ?></span>
-                    </div>
-                </div>
+            <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie' ?>" method="POST">
 
                 <div class="box-body with-border">
                     <!-- Menu déroulant -->
