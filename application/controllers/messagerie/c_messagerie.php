@@ -16,16 +16,19 @@ class c_messagerie extends C_utilitaire {
         $this->dir_retour = 'totp/c_totp_login/mon_compte';
         $this->load->model('messagerie/m_messagerie');
         $this->load->model('totp/m_totp_login');
+        
 
 	}
 
     function index(){
 
+
         // On peuple la variable data pour charger les bons script/css
-        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','cssIndex' );
+        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','cssMessagerie' );
 
         // Creation du bandeau
         $data['titre'] = array("Menu", "fa fa-shower");
+        
 
 
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login

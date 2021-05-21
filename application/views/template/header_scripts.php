@@ -119,6 +119,9 @@ foreach ($scripts as $script) {
 	else if ($script == 'cssIndex'){
 		echo '<link rel="stylesheet" href="..\..\..\assets\CSS\index.css">';
 	}
+    if ($script == 'cssMessagerie'){
+		echo '<link rel="stylesheet" href="..\..\..\assets\CSS\messagerie.css">';
+	}
 
 
     //----------------------------------------------------------------------------------------//

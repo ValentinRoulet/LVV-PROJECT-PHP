@@ -15,61 +15,192 @@ if ($_SESSION['dataUser'] == null) {
         <script src='<?= base_url() ?>assets/plugins/tinymce/js/tinymce/tinymce.min.js'></script>
     </head>
     <body>
-            
-            
-        <div class="box box-primary with-border col-md-4">
-            <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie' ?>" method="POST">
+    
 
-                <div class="box-body with-border">
-                    <!-- Menu déroulant -->
-                    <div class="col-sm-10">
-                        <select name="categorie" id="Categorie" class="col-sm-2 col-md-offset-6">
-                            <!-- Boucle pour récupérer et afficher toutes les catégories de la base de donnée -->
-                            <?php foreach ( $Categ as $value) { ?>
-                                <option value="<?php echo $value->id_categorie; ?>"><?php echo $value->lib_categorie; ?></option>
-                            <?php } 
-                            
-                                if(isset($categData)) { ?>
-
-                                    <script>
-                                    
-                                        let element = document.getElementById("Categorie");
-                                        element.value = <?php echo $categData[0]->id_categorie_post ?>
-                                    
-                                    </script>
-
-                            <?php  } ?>
-                        </select>
-
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="far fa-calendar-alt"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" name="datetimes" id="datetimes" value='<?php if(isset($Date)) {echo($Date);} else { echo date('d-m-Y H:i:s');} ?>'>
+    <div name="page" class="page">
+        <div name="conteneurG" class="conteneurG">
+            <div name="boutonCréer">
+                <button type="button" id='btnNew' class="btn btn-block btn-primary btn-lg">Nouveau Message..</button>
+            </div>
+            <div name="ListeProfil">
+                <div class="Profils">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Profil</span>
+                            <span class="info-box-number">Message</span>
                         </div>
-
                     </div>
                 </div>
 
-                <div class="box-footer with-border">
-
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2">
-                            <input type="text" name="message" id="inputMessage" class="form-control editor" value='<?php if(isset($Message)) {echo($Message[0]->message_post);} ?>'>
+                <div class="Profils">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Profil2</span>
+                            <span class="info-box-number">Message2</span>
                         </div>
-                        
-                        <span class="text-danger"><?php echo form_error('message'); ?></span>
-                        
                     </div>
-
                 </div>
-
-                <div class="box-footer text-center">
-                    <button type="submit" class="btn btn-info">Valider</button>
-                </div>
-
-            </form>
+            </div>
         </div>
+        <div name="conteneurD">
+            <div name="ListeMessage">
+                <div class="box-body chat">
+                    <!-- Conversations are loaded here -->
+                    <div class="direct-chat-messages AreaMessage">
+                    <!-- Message. Default to the left -->
+                        <div class="direct-chat-msg">
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                            </div>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                Is this template really for free? That's unbelievable!
+                            </div>
+                        </div>
+
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                            </div>
+
+                            <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- --------------------- -->
+
+                                            <div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div><div class="direct-chat-msg right">
+                                                <div class="direct-chat-info clearfix">
+                                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                                </div>
+
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div>
+
+                        <!---------------------------->
+                    </div>
+                </div>
+            </div>
+
+            <div name="editeur">
+            </div>
+        </div>
+    </div>
+
+
+
 
         <!-- Script de l'éditeur de texte -->
         <script>
