@@ -3,6 +3,7 @@
 class m_messagerie extends CI_Model
 {
 
+    //je sais pas si ça marche
     public function get_id_envoi($data)
     {
         $this->db->select('DISTINCT(IDUserEnvoie)');
@@ -13,29 +14,47 @@ class m_messagerie extends CI_Model
         return $query->result();
     }
 
-    public function get_message_profil($data)
+    //Permet de récupérer toute une conversation (en combinaison avec celle du dessous)
+    public function get_message_profil_envoyeur($data,$data1)
     {
-
-        $sql = "SELECT message_id, message_text, message_date FROM message_user, message WHERE MessageUser = message_id AND (IDUserRecu = 1 AND IDUserEnvoie = 2) or (IDUserRecu = 2 AND IDUserEnvoie = 1)";
-        $query = $this->db->query($sql, array(
-            'id' => $data['userInfo'],
-            'id' => $data['userInfo'],
-            'id' => $data['userInfo'],
-            'id' => $data['userInfo']
-        ));
-        return $query->result();
-    } //SELECT  message_id, message_text, message_date  FROM MU.message_user, M.message WHERE MessageUser = message_id and (IDUserRecu = 2 AND IDUserEnvoie = 1) or (IDUserRecu = 1 AND IDUserEnvoie = 2)
-
-
-    public function get_all_message()
-    {
-        $this->db->select('message_id','message_text','message_date');
-        $this->db->from('message_user','message');
-        $this->db->where(array('user_id' => $_SESSION['dataUser']));
-        $query = $this->db->get();
+        $sql = " 
+        SELECT message_id, message_date, message_text, message_id_receveur, message_id_envoyeur 
+        FROM message m, users u 
+        WHERE m.message_id_envoyeur = u.user_id 
+        AND m.message_id_envoyeur = ? AND m.message_id_receveur = ?
+        ";
+        $query = $this->db->query($sql, array($data,$data1));
         return $query->result();
     }
 
+    //Permet de récupérer toute une conversation (en combinaison avec celle du dessus)
+    public function get_message_profil_envoyeur1($data1,$data)
+    {
+        $sql = " 
+        SELECT message_id, message_date, message_text, message_id_receveur, message_id_envoyeur
+        FROM message m, users u 
+        WHERE m.message_id_envoyeur = u.user_id 
+        AND m.message_id_envoyeur = ? AND m.message_id_receveur = ?
+        ";
+        $query = $this->db->query($sql, array($data,$data1));
+        return $query->result();
+    }
+
+    //permet de récupérer le dernier message de tout les utilisateur a qui on a parler
+    public function get_id_profil_envoyeur($data)
+    {
+        $sql = " 
+        SELECT message_id_envoyeur, message_text
+        FROM message m, users u 
+        WHERE m.message_id_envoyeur = u.user_id AND  m.message_id_receveur = ?
+        GROUP BY message_id_envoyeur
+        ORDER BY message_date DESC 
+        ";
+        $query = $this->db->query($sql, array($data));
+        return $query->result();
+    } 
+
+    //Je sais pas si c'est fonctionelle
     public function get_roles()
     {
         $this->db->select('statut_id');
@@ -44,19 +63,20 @@ class m_messagerie extends CI_Model
         return $query->result();
     }
 
-
-
-
-    public function get_chat_messages($chat_id, $last_chat_message_id = 0){
-
-
-        $query_str = "SELECT cm.chat_message_id, cm.user_id, cm.chat_message_content, DATE_FORMAT(cm.date_created, '%D of %M %Y at %H:%i:%s') AS chat_message_timestamp, u.username FROM chat_messages cm JOIN users u ON cm.user_id = u.user_id WHERE cm.chat_id = ? and cm.chat_message_id > ? ORDER BY cm.chat_message_id ASC";
-        
-        $result = $this->db->query($query_str, array($chat_id, $last_chat_message_id));
-        
-        return $result;
+    //Permet de récupérer dans un tableau le nom et prénom d'un utilisateur en fonction de son id
+    public function get_name_user($data)
+    {
+        $sql = " 
+        SELECT user_nom, user_prenom
+        FROM users 
+        WHERE user_id = ?
+        ";
+        $query = $this->db->query($sql, array($data));
+        return $query->row();
     }
     
+    
+
 
 
 }
