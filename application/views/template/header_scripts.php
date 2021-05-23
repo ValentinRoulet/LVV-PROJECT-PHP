@@ -109,6 +109,15 @@ foreach ($scripts as $script) {
     //----------------------------------------------------------------------------------------//
     //------------------------------------framwork css bulma------------------------------------------//
     //----------------------------------------------------------------------------------------//
+	if ($script == 'tinyMCE'){
+		echo '<script type="text/javascript" src="..\..\..\assets\plugins\tinymce\js\tinymce\tinymce.min.js"></script>';
+        echo '<script type="text/javascript" src="..\..\..\assets\plugins\tinymce\js\tinymce\jquerry.tinymce.min.js"></script>';
+	}
+
+
+    //----------------------------------------------------------------------------------------//
+    //------------------------------------framwork css bulma------------------------------------------//
+    //----------------------------------------------------------------------------------------//
 	else if ($script == 'bulma'){
 		echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">';
 	}
@@ -129,7 +138,7 @@ foreach ($scripts as $script) {
     //----------------------------------------------------------------------------------------//
     else if ($script == 'datepicker' || $script == 'timepicker' || $script == 'daterangepicker'){
         echo "<link rel='stylesheet' href='".base_url('/assets/plugins/datepicker/css/datepicker3.css')."'/>
-              <link rel='stylesheet' href='".base_url('/assets/plugins/datepicker/css/daterangepicker-bs3.css')."'/>";
+            <link rel='stylesheet' href='".base_url('/assets/plugins/datepicker/css/daterangepicker-bs3.css')."'/>";
     }
         //----------------------------------------------------------------------------------------//
     //---------------------------------------CLOCKPICKER---------------------------------------//
@@ -179,21 +188,8 @@ foreach ($scripts as $script) {
 	else if($script == 'cssChargement')
 	{
 	    echo "<link rel='stylesheet' type='text/css' href='".base_url('/assets/plugins/Messagerie/cssMessagerie/Chargement.css')."'/>";
-	}
-    //----------------------------------------------------------------------------------------//
-	//----------------------------------SURVEY-----------------------------------------//
-	//----------------------------------------------------------------------------------------//
-	else if ($script == 'survey'){
-            echo "<link rel='stylesheet' type='text/css'  href='".base_url('/assets/plugins/survey/surveyeditor.css')."'/>";
-            echo "<link rel='stylesheet' type='text/css'  href='".base_url('/assets/plugins/survey/surveyeditor.min.css')."'/>";
-	    echo "<link rel='stylesheet' type='text/css'  href='".base_url('/assets/plugins/survey/survey.min.css')."'/>";
     }
-    //----------------------------------------------------------------------------------------//
-	//---------------------------------- qtip -----------------------------------------//
-	//----------------------------------------------------------------------------------------//
-	if ($script == 'qtip'){
-        echo "<link href='".base_url('/assets/plugins/qtip/jquery.qtip.min.css')."' rel='stylesheet' />";
-    }
+
     //----------------------------------------------------------------------------------------//
 	//----------------------------------FULLCALENDAR-----------------------------------------//
 	//----------------------------------------------------------------------------------------//
@@ -205,43 +201,7 @@ foreach ($scripts as $script) {
 
         
     }
-    //----------------------------------------------------------------------------------------//
-	//----------------------------------------JEXCEL------------------------------------------//
-	//----------------------------------------------------------------------------------------//
-	if ($script == 'jexcel'){
-        //echo "<script src='" . base_url('/assets/plugins/jexcel/jexcel.css') . "'> </script>";
-       // echo "<script src='" . base_url('/assets/plugins/jexcel/jsuites.css') . "'> </script>";
-        echo ' <link rel="stylesheet" href="https://bossanova.uk/jexcel/v3/jexcel.css" type="text/css" />';
-       echo '<link rel="stylesheet" href="https://bossanova.uk/jsuites/v2/jsuites.css" type="text/css" />';
-    }
-    // ----------------------------------------------------------------------------------------//
-    // ------------------------------------INSI------------------------------------------//
-    // ----------------------------------------------------------------------------------------//
-    if ($script == 'insi') {
-        echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/examples_common_parameters.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect_dmp.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect_insi.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/commun.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/exemples_dmp.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/insi.js'> </script>";
-        echo "<link href='" . base_url()."assets/plugins/dmpconnect/exemples.css' rel='stylesheet'>";
-    }
-    // ----------------------------------------------------------------------------------------//
-    // ------------------------------------VITALE------------------------------------------//
-    // ----------------------------------------------------------------------------------------//
-    if ($script == 'vitale') {
-        echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/examples_common_parameters.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect_dmp.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/dmpconnect_insi.js'> </script>";
-       // echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/commun.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/examples_dmp.js'> </script>";
-        echo "<script type='text/javascript' src='" . base_url()."assets/plugins/dmpconnect/vitale.js'> </script>";
-        echo "<link href='" . base_url()."assets/plugins/dmpconnect/examples.css' rel='stylesheet'>";
-    }
+
 }
 //echo '<script type = "text/javascript" src="'.base_url()."'/assets/plugins/sisyphus/sisyphus.min.js').'"></script>';
 ?>

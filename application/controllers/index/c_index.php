@@ -21,7 +21,7 @@ class c_index extends C_utilitaire {
     function index(){
 
         // On peuple la variable data pour charger les bons script/css
-        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','animScroll','cssIndex', 'calendar');
+        $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','animScroll','cssIndex', 'calendar','tinyMCE');
 
         // Creation du bandeau
         $data['titre'] = array("Menu", "fa fa-shower");

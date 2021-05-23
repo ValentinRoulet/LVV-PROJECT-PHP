@@ -8,9 +8,10 @@ if ($_SESSION['dataUser'] == null) {
 ?>
 
 <!DOCTYPE HTML>
-<!doctype html>
-<html>
+
+<html lang="fr">
     <head>
+        <meta charset=UTF-8>
         <!-- TinyMCE script -->
         <script src='<?= base_url() ?>assets/plugins/tinymce/js/tinymce/tinymce.min.js'></script>
     </head>
@@ -88,23 +89,22 @@ if ($_SESSION['dataUser'] == null) {
                                     </div>
                                     <!-- FIN Message par la gauche par défaut -->
                             <?php } $y = $y + 1;} ?>
-                        <?php } ?>
-
-
-
+                        
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div name="editeur" class="editeur" style="margin-left: 10px;">
-            <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/conversation' ?>" method="POST">
-                <input type="text" id="text_message" name="text_message" style="text-align: center" >
-            </form>
-        </div>
+            <div name="editeur" class="editeur" style="margin-left: 10px;">
+                <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/conversation' ?>" method="POST">
+                    <input type="text" name="message" id="inputMessage" class="editor" value=''>
+                </form>
+                <?php } ?>
+            </div>
+            </div>
     </div>
 <!-----------------------------------------FIN MESSAGES---------------------------------->
 
-    </div>
+    
 
 
 
@@ -125,7 +125,7 @@ if ($_SESSION['dataUser'] == null) {
             });
         </script>
 
-        <!-- Script du datePicker et de l(heure) -->
+        <!-- Script du datePicker et de l'heure -->
         <script>
             $(function() {
                 $('input[name="datetimes"]').daterangepicker({
