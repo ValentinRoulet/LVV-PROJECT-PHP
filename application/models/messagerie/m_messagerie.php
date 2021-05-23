@@ -74,6 +74,16 @@ class m_messagerie extends CI_Model
         $query = $this->db->query($sql, array($data));
         return $query->row();
     }
+
+    public function set_message($id_envoyeur,$id_receveur,$message,$date)
+    {
+        $sql = " 
+        INSERT INTO message (message_id_envoyeur, message_id_receveur, message_text, message_date)
+        VALUES ('?', '?', '?','?')
+        ";
+        $query = $this->db->query($sql, array($id_envoyeur,$id_receveur,$message,$date));
+        
+    }
     
     
 

@@ -40,6 +40,27 @@ p{
 
 /* ---------------------- FIN TESTS -------------------------------------------------------------*/
 
+.button {
+
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    border:0;
+    outline:none;
+}
+
+.text_message
+{
+    position: absolute;
+    text-align: center;
+
+}
+
+.editeur
+{
+    margin-left: 5%;
+}
+
 
 /* ---------------------- flexBox -------------------------------------------------------------*/
 

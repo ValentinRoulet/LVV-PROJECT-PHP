@@ -28,7 +28,7 @@ class c_index extends C_utilitaire {
 
 
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
-        if($_SESSION['dataUser'] == null){
+        if(!isset($_SESSION['dataUser'])){
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
                 array("Connexion", "fas fa-sync", $this->dir_login, null),
