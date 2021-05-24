@@ -21,9 +21,11 @@ class m_messagerie extends CI_Model
         SELECT message_id, message_date, message_text, message_id_receveur, message_id_envoyeur 
         FROM message m, users u 
         WHERE m.message_id_envoyeur = u.user_id 
-        AND m.message_id_envoyeur = ? AND m.message_id_receveur = ?
+        AND (m.message_id_envoyeur = ? AND m.message_id_receveur = ?) OR (m.message_id_envoyeur = ? AND m.message_id_receveur = ?)
+        GROUP BY m.message_date
+        ORDER BY m.message_date ASC
         ";
-        $query = $this->db->query($sql, array($data,$data1));
+        $query = $this->db->query($sql, array($data,$data1,$data1,$data));
         return $query->result();
     }
 
@@ -79,7 +81,7 @@ class m_messagerie extends CI_Model
     {
         $sql = " 
         INSERT INTO message (message_id_envoyeur, message_id_receveur, message_text, message_date)
-        VALUES ('?', '?', '?','?')
+        VALUES (?, ?, ?, ?)
         ";
         $query = $this->db->query($sql, array($id_envoyeur,$id_receveur,$message,$date));
         

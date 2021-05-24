@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
     use Otp\Otp;
     use Otp\GoogleAuthenticator;

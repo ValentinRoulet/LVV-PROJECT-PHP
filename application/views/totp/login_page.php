@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <body>
     <div class="col-md-6 col-md-offset-3">
         <div class="box box-info">

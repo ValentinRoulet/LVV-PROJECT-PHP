@@ -19,11 +19,7 @@ foreach ($scripts as $script) {
 			<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css' />
             <link rel='stylesheet' href='".base_url('/assets/plugins/bootstrap/css/font-awesome.min.css')."'/>";
     } 
-	
-	elseif ($script == 'wysihtml5'){
-        echo "<link rel='stylesheet' href='".base_url('/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')."'/>";
-    }
-	
+
 	//----------------------------------------------------------------------------------------//
 	//----------------------------------FULLCALENDAR-----------------------------------------//
 	//----------------------------------------------------------------------------------------//
@@ -36,7 +32,6 @@ foreach ($scripts as $script) {
         
     }
     //
-
 	
 	 //----------------------------------------------------------------------------------------//
     //-------------------------------------SELECT2------------------------------------------//
@@ -63,22 +58,11 @@ foreach ($scripts as $script) {
               <link rel='stylesheet' href='".base_url('/assets/plugins/autocomplete/css/token-input-custom.css')."'/>";
     }
 	
-	//----------------------------------------------------------------------------------------//
-    //---------------------------------------CHOSEN-------------------------------------------//
-    //----------------------------------------------------------------------------------------//
-    else if ($script === 'chosen'){
-        echo "<link rel='stylesheet' href='".base_url('/assets/plugins/grocery_crud/css/jquery_plugins/chosen/chosen.css')."'/>";
-		echo "<style>
-		.chosen-mini{
-			width: 100px !important;
-		}
-		</style>";
-    }
     
     //----------------------------------------------------------------------------------------//
     //---------------------------------------LTE ADMIN----------------------------------------//
     //----------------------------------------------------------------------------------------//
-    else if ($script === 'lte'){
+    if ($script === 'lte'){
         echo "<link rel='stylesheet' href='".base_url('/assets/plugins/lteadmin/css/AdminLTE.min.css')."'/>";
 		echo "<link rel='stylesheet' href='".base_url('/assets/plugins/lteadmin/css/skins/skin-blue.min.css')."'/>";
     } 
@@ -86,14 +70,14 @@ foreach ($scripts as $script) {
 	//----------------------------------------------------------------------------------------//
     //------------------------------------SWEETALERT------------------------------------------//
     //----------------------------------------------------------------------------------------//
-	else if ($script == 'sweetalert'){
+	if ($script == 'sweetalert'){
 		echo "<link rel='stylesheet' href='".base_url('/assets/plugins/sweetalert/sweetalert.css')."'/>";
 	}
 
     //----------------------------------------------------------------------------------------//
     //------------------------------------Animation Scroll------------------------------------------//
     //----------------------------------------------------------------------------------------//
-	else if ($script == 'animScroll'){
+	if ($script == 'animScroll'){
 		echo '<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>';
         echo '<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>';
         echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>';
@@ -105,21 +89,12 @@ foreach ($scripts as $script) {
         echo '<script type="text/javascript" src="..\..\..\assets\JavaScript\AnimationScroll.js"></script>';
 	}
     
-
     //----------------------------------------------------------------------------------------//
     //------------------------------------framwork css bulma------------------------------------------//
     //----------------------------------------------------------------------------------------//
 	if ($script == 'tinyMCE'){
 		echo '<script type="text/javascript" src="..\..\..\assets\plugins\tinymce\js\tinymce\tinymce.min.js"></script>';
-        echo '<script type="text/javascript" src="..\..\..\assets\plugins\tinymce\js\tinymce\jquerry.tinymce.min.js"></script>';
-	}
-
-
-    //----------------------------------------------------------------------------------------//
-    //------------------------------------framwork css bulma------------------------------------------//
-    //----------------------------------------------------------------------------------------//
-	else if ($script == 'bulma'){
-		echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">';
+        //echo '<script type="text/javascript" src="..\..\..\assets\plugins\tinymce\js\tinymce\jquerry.tinymce.min.js"></script>';
 	}
 
     //----------------------------------------------------------------------------------------//

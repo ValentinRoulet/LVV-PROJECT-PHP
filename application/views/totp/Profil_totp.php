@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <h1>Informations de l'utilisateur</h1>
 <br><br>
 

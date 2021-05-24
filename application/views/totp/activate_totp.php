@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <h1>TOTP</h1>
 
 <?php 

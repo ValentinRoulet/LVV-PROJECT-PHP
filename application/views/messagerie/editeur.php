@@ -7,13 +7,11 @@ if ($_SESSION['dataUser'] == null) {
 }
 ?>
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
 <html lang="fr">
     <head>
         <meta charset=UTF-8>
-        <!-- TinyMCE script -->
-        <script src='<?= base_url() ?>assets/plugins/tinymce/js/tinymce/tinymce.min.js'></script>
     </head>
     <body>
     
@@ -22,10 +20,11 @@ if ($_SESSION['dataUser'] == null) {
         <div name="conteneurG" class="conteneurG">
             <div name="boutonCréer">
                 <button type="button" id='btnNew' class="btn btn-block btn-primary btn-lg">Nouveau Message..</button>
-            </div>
-            <div name="ListeProfil">
+            </div> <!-- Bouton Créer -->
+
 <!----------------------------------------PROFILS------------------------------->
-    <!-- boucle foreach permet de mettre nom prénom pour chaque profils à qui on a parlé ------->
+            <div name="ListeProfil">
+                    <!-- boucle foreach permet de mettre nom prénom pour chaque profils à qui on a parlé ------->
                     <?php $x = 0; ?>
                     <?php foreach ( $profils_envoyeur as $value) { ?>
                         <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/conversation' ?>" method="POST">
@@ -44,17 +43,15 @@ if ($_SESSION['dataUser'] == null) {
                             </button>
                         </form>
                     <?php } ?>
-            
+            </div> <!-- Liste profil -->
 <!----------------------------------------FIN PROFILS------------------------------->
-
+        </div><!-- Conteneur gauche -->
 <!-----------------------------------------MESSAGES---------------------------------->
-            </div>
-        </div>
         <div name="conteneurD">
             <div name="ListeMessage">
-                <div class="box-body chat">
+                <div class="box-body chat" name="box message">
                     <!-- Conversations are loaded here -->
-                    <div class="direct-chat-messages AreaMessage">
+                    <div class="direct-chat-messages AreaMessage" name="message area" id='message_area'>
                         <?php $y = 0; ?>
                         <!-- boucle foreach pour récupérer et affecter des trucs pour chaque message de conversation --->
                         <?php if($ActiveConv == true) { ?>
@@ -81,7 +78,7 @@ if ($_SESSION['dataUser'] == null) {
                                             <span class="direct-chat-timestamp pull-right"><?php echo $conv[$y]->message_date ?></span>
                                         </div>
                                         <!-- /.direct-chat-info -->
-                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             <?php echo($conv[$y]->message_text) ?>
@@ -90,21 +87,30 @@ if ($_SESSION['dataUser'] == null) {
                                     <!-- FIN Message par la gauche par défaut -->
                             <?php } $y = $y + 1;} ?>
                         
-                    </div>
-                </div>
-            </div>
+                    </div> <!-- Mesage area -->
+                </div><!-- Box message -->
+            </div><!-- Liste Message -->
 
-            <div name="editeur" class="editeur" style="margin-left: 10px;">
-                <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/conversation' ?>" method="POST">
-                    <input type="text" name="message" id="inputMessage" class="editor" value=''>
+            <div name="editeur" class="editeur">
+                <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/envoyer' ?>" method="POST">
+                    <input type="text" name="inputMessage" id="inputMessage" class="editor" autocomplete="off" value=''>
+                    
+                    <button type="submit" name="submit" id='submit'> Envoyer </button>
                 </form>
                 <?php } ?>
             </div>
-            </div>
-    </div>
+        </div><!--Conteneur droite -->
+    </div> <!-- page -->
+
 <!-----------------------------------------FIN MESSAGES---------------------------------->
 
     
+<script type="text/javascript">
+    window.onload = function() 
+    {
+        $("div").scrollTop(1000)
+    }
+</script>
 
 
 
