@@ -19,7 +19,9 @@ if ($_SESSION['dataUser'] == null) {
     <div name="page" class="page">
         <div name="conteneurG" class="conteneurG">
             <div name="boutonCréer">
-                <button type="button" id='btnNew' class="btn btn-block btn-primary btn-lg">Nouveau Message..</button>
+                <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/nouveau' ?>" method="POST">
+                    <button type="submit" id='btnNew' class="btn btn-block btn-primary btn-lg">Nouveau Message...</button>
+                </form>
             </div> <!-- Bouton Créer -->
 
 <!----------------------------------------PROFILS------------------------------->
@@ -35,7 +37,7 @@ if ($_SESSION['dataUser'] == null) {
                                         <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text"><?php echo($profils_envoyeur_name[$x]->user_nom . " " . $profils_envoyeur_name[$x]->user_prenom)  ?></span>
-                                            <span class="info-box-number"><?php echo($profils_envoyeur[$x]->message_text) ?></span>
+                                            <span class="info-box-number"><?php echo($last_message[$x]->message_text) ?></span>
                                             <?php $x = $x + 1 ?>
                                         </div>
                                     </div>
