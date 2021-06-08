@@ -222,8 +222,6 @@ class c_messagerie extends C_utilitaire {
         $this->m_messagerie->set_message($data['userId'],$data['id_profils'],$data['message'],$data['date']);
 
 
-        var_dump($data['id_profils']);
-
 
 
 

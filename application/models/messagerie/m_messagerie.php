@@ -3,16 +3,6 @@
 class m_messagerie extends CI_Model
 {
 
-    //je sais pas si ça marche
-    public function get_id_envoi($data)
-    {
-        $this->db->select('DISTINCT(IDUserEnvoie)');
-        $this->db->from('message_user');
-        $this->db->where(array('id_post' => $data['idData']));
-        $query = $this->db->get();
-
-        return $query->result();
-    }
 
     //Permet de récupérer toute une conversation
     public function get_message_profil_envoyeur($data,$data1)
