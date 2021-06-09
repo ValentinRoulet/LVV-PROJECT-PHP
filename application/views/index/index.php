@@ -33,7 +33,7 @@
         <div class="Texte1"> <p style=" font-size: 1.5vw; margin: auto;"> Ce BTS est composé en deux option : SLAM et SISR </p> </div>
       </div>
 
-      <div class="spacer s3" name="espace"></div>
+      <div class="spacer s2" name="espace"></div>
 
       <!-- groupement des deux images ------------->
       <div class="">
@@ -61,7 +61,17 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h3 class="modal-title textNoir" id="">Présentation SISR</h3>
-              <h4 class="modal-title textNoir" id=""> des chomeurs sa mère</h4>
+              <h4 class="modal-title textNoir" id=""> L’option Solutions d’infrastructure, systèmes et réseaux forme des professionnels des réseaux et équipements informatiques (installation, maintenance, sécurité). En sortant d’un BTS SIO SISR, vous serez capables de gérer et d’administrer le réseau d’une société et d’assurer sa sécurité et sa maintenance.
+
+                                                      Les techniciens supérieurs en informatique option SISR, peuvent accéder aux métiers de :
+
+                                                      Administrateur systèmes et réseaux,
+                                                      Informaticien support et déploiement,
+                                                      Pilote d’exploitation,
+                                                      Support systèmes et réseaux,
+                                                      Technicien d’infrastructure,
+                                                      Technicien de production,
+                                                      Technicien micro et réseaux.</h4>
             </div>
             <div class="modal-body">
               ...
@@ -78,8 +88,22 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title textNoir" id="">Présentation SLAM</h3>
-              <h4 class="modal-title textNoir" id=""> Les boss en fait</h4>
+              <h3 class="modal-title textNoir" id="">Présentation SLAM </h3>
+              <h4 class="modal-title textNoir" id=""> L’option Solutions logicielles et applications métiers forme des spécialistes des logiciels (rédaction d’un cahier des charges, formulation des besoins et spécifications, développement, intégration au sein de la société).
+
+                Les techniciens supérieurs en informatique option slam, sont préparés aux métiers de
+
+                Développeur d’applications informatiques
+                Développeur informatique
+                Analyste d’applications ou d’études
+                Analyste programmeur
+                Chargé d’études informatiques
+                Informaticien d’études
+                Programmeur analyste
+                Programmeur d’applications
+                Responsable des services applicatifs
+                Technicien d’études informatiques
+              </h4>
             </div>
             <div class="modal-body">
               ...
@@ -97,7 +121,7 @@
 
 
 
-    <div class="spacer s10" name="espace"></div>
+    <div class="spacer s3" name="espace"></div>
 
     <!-- CALENDRIER -->
     <div id='calendar'></div>

@@ -48,21 +48,20 @@ if ($_SESSION['dataUser'] == null) {
         </div><!-- Conteneur gauche -->
 <!-----------------------------------------MESSAGES---------------------------------->
         <div name="conteneurD">
-            <form class="form-horizontal" action="<?php echo base_url() . 'index.php/messagerie/c_messagerie/nouveau' ?>" method="POST">
+            <form class="form-horizontal" action="<?php echo base_url()?>index.php/messagerie/c_messagerie/nouveau" method="POST">
                 <select name="id_profils" id="id_profils" class="col-sm-3 col-md-offset-5">
                     <option value=''>Selectionner un utilisateur</option>
                     <!-- Boucle pour récupérer et afficher toutes les catégories de la base de donnée -->
                     <?php $z = 0; ?>
                     <?php foreach ( $profils as $value) { ?>
                         <option value='<?php echo($profils[$z]->user_id) ?>'><?php echo($profils[$z]->user_nom . " " . $profils[$z]->user_prenom) ?> </option>
-
                         
                         <?php $z = $z + 1; } ?>
                 </select>
 
                     <div name="editeur" class="editeur">
                         <input type="text" name="inputMessage" id="inputMessage" class="editor" autocomplete="off" value=''>
-                        <button type="submit" name="submit" id='submit'> Envoyer </button>
+                        <button type="submit" class="btn btn-info">Envoyer</button>
                     </div>
             </form>
         </div><!--Conteneur droite -->

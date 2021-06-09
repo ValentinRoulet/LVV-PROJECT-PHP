@@ -4,9 +4,9 @@
     }
     
 </style>
-<div class="box box-info ">
-    <div class='box-header gs_reveal2 gs_reveal_fromBot with-border bg-aqua color-palette'>
-        <h2 class='box-title'><i class='<?php echo $titre[1]?>'></i>&emsp;<?php echo $titre[0];?> 
+<div class="box-info">
+    <div class='box-header gs_reveal2 gs_reveal_fromBot with-border accent-navy color-palette'>
+        <h2 style="color:black;" class='box-title'><i class='<?php echo $titre[1]?>'></i>&emsp;<?php echo $titre[0];?> 
         <?php if (isset($titre[3])){
 			echo $titre[3];
 		}?>

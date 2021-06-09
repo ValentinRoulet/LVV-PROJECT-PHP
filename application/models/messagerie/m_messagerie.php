@@ -40,9 +40,22 @@ class m_messagerie extends CI_Model
     public function get_id_profil_envoyeur($data)
     {
         $sql = " 
-        SELECT message_id_envoyeur, message_text
+        SELECT message_id_envoyeur
         FROM message m, users u 
         WHERE m.message_id_envoyeur = u.user_id AND  m.message_id_receveur = ?
+        GROUP BY message_id_envoyeur
+        ORDER BY message_date DESC 
+        ";
+        $query = $this->db->query($sql, array($data));
+        return $query->result();
+    }
+
+    public function get_id_profil_envoyeur2($data)
+    {
+        $sql = " 
+        SELECT message_id_envoyeur
+        FROM message m, users u 
+        WHERE m.message_id_envoyeur = ? AND  m.message_id_receveur = u.user_id
         GROUP BY message_id_envoyeur
         ORDER BY message_date DESC 
         ";

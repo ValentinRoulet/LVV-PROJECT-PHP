@@ -10,6 +10,8 @@ class c_messagerie extends C_utilitaire {
 		parent::__construct();
 		date_default_timezone_set( 'Europe/Paris' );
 		setlocale( LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1' );
+        $this->load->library('form_validation');
+        $this->load->helper('form');
         $this->dir_controlleur = 'messagerie/c_messagerie';
         $this->dir_index = 'index/c_index';
         $this->dir_login = 'totp/c_totp_login';
@@ -28,7 +30,7 @@ class c_messagerie extends C_utilitaire {
         $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datepicker','cssMessagerie' );
 
         // Creation du bandeau
-        $data['titre'] = array("Menu", "fa fa-shower");
+        $data['titre'] = array("Messagerie", "fas fa-envelope");
         
 
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
@@ -43,16 +45,19 @@ class c_messagerie extends C_utilitaire {
             //Permet de créer les boutons dans le menu en header
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
-                array("Déconnexion", "fas fa-sync", $this->dir_login, null),
-                array("Retour", "fas fa-sync", $this->dir_retour, null),
+                array("Déconnexion", "fas fa-sign-out-alt", $this->dir_login, null),
+                array("Retour", "fa fa-arrow-left", $this->dir_retour, null),
             );
         }
+
         
         $data['ActiveConv'] = false;
         
 
         //Permet de trier tous les utilisateurs à qui on a parler du plus récent au plus ancien
         $data['profils_envoyeur'] = $this->m_messagerie->get_id_profil_envoyeur($data['userId']);
+        //$data['profils_envoyeur2'] = $this->m_messagerie->get_id_profil_envoyeur2($data['userId']);
+        //$data['profils_envoyeur'] = array_merge($data['profils_envoyeur1'],$data['profils_envoyeur2']);
         $x = 0;
         foreach ( $data['profils_envoyeur'] as $value) 
         {
@@ -60,6 +65,11 @@ class c_messagerie extends C_utilitaire {
             $data['profils_envoyeur_name'][$x] = $this->m_messagerie->get_name_user($data['profils_envoyeur'][$x]->message_id_envoyeur);
             $x = $x + 1;
         }
+
+        //var_dump($data['profils_envoyeur']);
+        //var_dump($data['last_message']);
+        //var_dump($data['profils_envoyeur_name']);
+
 
         
         
@@ -79,7 +89,7 @@ class c_messagerie extends C_utilitaire {
         $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datepicker','cssMessagerie','tinyMCE' );
 
         // Creation du bandeau
-        $data['titre'] = array("Menu", "fa fa-shower");
+        $data['titre'] = array("Messagerie", "fas fa-envelope");
         
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
         if($_SESSION['dataUser'] == null)
@@ -93,11 +103,12 @@ class c_messagerie extends C_utilitaire {
              //Permet de créer les boutons dans le menu en header
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
-                array("Déconnexion", "fas fa-sync", $this->dir_login, null),
-                array("Retour", "fas fa-sync", $this->dir_retour, null),
+                array("Déconnexion", "fas fa-sign-out-alt", $this->dir_login, null),
+                array("Retour", "fa fa-arrow-left", $this->dir_retour, null),
             );
         }
 
+        //permet de savoir si une conversation est en cours
         $data['ActiveConv'] = true;
 
         //Permet de trier tous les utilisateurs à qui on a parler du plus récent au plus ancien
@@ -110,7 +121,7 @@ class c_messagerie extends C_utilitaire {
             $x = $x + 1;
         }
 
-
+        //on récupère l'id de la personne qui recoit
         $data['personne'] = $this->input->post('id_personne');
 
             
@@ -169,6 +180,7 @@ class c_messagerie extends C_utilitaire {
                     );
                 }
 
+        //on mets le message, la date dans des variable puis on envoie tout dans la fonction set_message
         $data["message"] = $this->input->post('inputMessage');
         $data['date'] = date("Y-m-d H:i:s");  
         $this->m_messagerie->set_message($data['userId'],$_SESSION['personne'],$data['message'],$data['date']);
@@ -182,7 +194,9 @@ class c_messagerie extends C_utilitaire {
         $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datepicker','cssMessagerie' );
 
         // Creation du bandeau
-        $data['titre'] = array("Menu", "fa fa-shower");
+        $data['titre'] = array("Messagerie", "fas fa-envelope");
+
+        
         
 
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
@@ -216,15 +230,20 @@ class c_messagerie extends C_utilitaire {
         }
 
         $data['profils'] = $this->m_messagerie->get_all_profil();
-        $data['id_profils'] = $this->input->post('id_profils');
-        $data["message"] = $this->input->post('inputMessage');
-        $data['date'] = date("Y-m-d H:i:s");  
-        $this->m_messagerie->set_message($data['userId'],$data['id_profils'],$data['message'],$data['date']);
 
-
-
-
-
+        $this->form_validation->set_rules("inputMessage","inputMessage","required");
+        if($this->form_validation->run()){
+            $data['id_profils'] = $this->input->post('id_profils');
+            $data["message"] = $this->input->post('inputMessage');
+            $data['date'] = date("Y-m-d H:i:s");  
+            $this->m_messagerie->set_message($data['userId'],$data['id_profils'],$data['message'],$data['date']);
+            var_dump($data['id_profils']);
+            var_dump($data["message"]);
+            var_dump($data['date']);
+            var_dump($data['userId']);
+            //redirect($this->dir_controlleur);
+        }
+        
 
         // On charge les differents modules neccessaires a l'affichage d'une page
         $this->load->view('template/header_scripts', $data); 
@@ -233,13 +252,6 @@ class c_messagerie extends C_utilitaire {
         $this->load->view('template/footer_html_base');
         $this->load->view('messagerie/nouveau',$data);
     }
-
-
-
-
-
-
-
 
 
 }

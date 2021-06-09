@@ -24,14 +24,14 @@ class c_index extends C_utilitaire {
         $data['scripts'] = array('jquery', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert','animScroll','cssIndex', 'calendar');
 
         // Creation du bandeau
-        $data['titre'] = array("Menu", "fa fa-shower");
+        $data['titre'] = array("", "");
 
 
         // si la session est null c'est que l'utilisateur n'est pas connecté donc retour à la page de login
         if(!isset($_SESSION['dataUser'])){
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
-                array("Connexion", "fas fa-sync", $this->dir_login, null),
+                array("Connexion", "fas fa-sign-in-alt", $this->dir_login, null),
             );
         }
         else
@@ -45,8 +45,8 @@ class c_index extends C_utilitaire {
             );
             $data['boutons'] = array(
                 array("Rafraichir", "fas fa-sync", $this->dir_controlleur, null),
-                array("Déconnexion", "fas fa-sync", $this->dir_login, null),
-                array("Mon compte", "fas fa-sync", $this->dir_compte, null),
+                array("Déconnexion", "fas fa-sign-out-alt", $this->dir_login, null),
+                array("Mon compte", "fas fa-user-circle", $this->dir_compte, null),
                 
             );
         }

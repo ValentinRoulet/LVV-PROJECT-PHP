@@ -53,7 +53,7 @@ if ($_SESSION['dataUser'] == null) {
             <div name="ListeMessage">
                 <div class="box-body chat" name="box message">
                     <!-- Conversations are loaded here -->
-                    <div class="direct-chat-messages AreaMessage" name="message area" id='message_area'>
+                    <div class="direct-chat-messages AreaMessage direct-chat-primary " name="message area" id='message_area'>
                         <?php $y = 0; ?>
                         <!-- boucle foreach pour récupérer et affecter des trucs pour chaque message de conversation --->
                         <?php if($ActiveConv == true) { ?>

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth',
         initialDate: '2021-05-07',
         locale: 'fr',
-        //détermine si le calendrier peut être modifier(Ajout, suppression, modification des dates)
+        //détermine si les dates peuvent être bouger
         editable: true,
 
 

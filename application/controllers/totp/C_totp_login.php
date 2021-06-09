@@ -69,7 +69,7 @@ class c_totp_login extends C_utilitaire {
         // On peuple la variable data pour charger les bons script/css
         $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');
         // Creation du bandeau
-        $data['titre'] = array("Login", "");
+        $data['titre'] = array("Login", "fas fa-user-circle");
         $data['boutons'] = array();
         $data['custom_script'] = '';
 
@@ -101,9 +101,9 @@ class c_totp_login extends C_utilitaire {
         // On peuple la variable data pour charger les bons script/css
         $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');
         // Creation du bandeau
-        $data['titre'] = array("Mon Compte", "");
-        $data['boutons'] = array(array("Deconnexion", "fa fa-sync", $this->dir_controlleur, null),
-                                array("Messagerie", "fas fa-bacon", $this->dir_messagerie, null),
+        $data['titre'] = array("Mon Compte", "fas fa-user-circle");
+        $data['boutons'] = array(array("Deconnexion", "fas fa-sign-out-alt", $this->dir_controlleur, null),
+                                array("Messagerie", "fas fa-envelope", $this->dir_messagerie, null),
                                 array("Retour", "fas fa-arrow-left", $this->dir_index, null),);
         $data['custom_script'] = '';
 
@@ -259,7 +259,7 @@ class c_totp_login extends C_utilitaire {
 
         $data['scripts'] = array('jquery2', 'bootstrap', 'lte', 'datatables', 'datepicker', 'sweetalert');
         // Creation du bandeau
-        $data['titre'] = array("Informations de l'utilisateur", "");
+        $data['titre'] = array("Informations de l'utilisateur", "fas fa-user");
         $data['boutons'] = array(
             array("Retour", "fa fa-arrow-left", $this->dir_controlleur . "/mon_compte", null)
         );
